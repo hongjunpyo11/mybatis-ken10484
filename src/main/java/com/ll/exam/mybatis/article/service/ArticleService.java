@@ -3,7 +3,9 @@ package com.ll.exam.mybatis.article.service;
 import com.ll.exam.mybatis.article.dto.Article;
 import com.ll.exam.mybatis.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,5 +16,9 @@ public class ArticleService {
 
     public List<Article> getArticles() {
         return articleRepository.getArticles();
+    }
+
+    public void write(String subject, String content) {
+        articleRepository.write(subject, content);
     }
 }
