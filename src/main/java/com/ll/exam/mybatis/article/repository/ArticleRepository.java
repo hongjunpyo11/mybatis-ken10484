@@ -29,4 +29,9 @@ public interface ArticleRepository {
             </script>
             """)
     void write(@Param("subject") String subject, @Param("content") String content);
+
+    @Select("""
+            SELECT LAST_INSERT_ID()
+            """)
+    public long getLastInsertId();
 }
