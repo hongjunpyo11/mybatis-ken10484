@@ -42,6 +42,18 @@ public interface ArticleRepository {
             WHERE id = #{id}
             </script>
             """)
-    Article getArticleById(long id);
-//    Article getArticleById(@Param("id") long id); // 오류 : 'Parameter not found. available parameters are ...' 해결볍
+    Article getArticleById(@Param("id") long id); // 오류 : 'Parameter not found. available parameters are ...' 해결볍
+//    Article getArticleById(long id);
+
+    @Select("""
+			<script>
+			SELECT A.*
+			FROM article AS A
+			WHERE 1
+			<if test="kw != ''">
+			AND A.subject LIKE CONCAT('%', #{kw}, '%')
+			</if>
+			</script>
+			""")
+    List<Article> search(String kwType, @Param("kw") String kw);
 }
