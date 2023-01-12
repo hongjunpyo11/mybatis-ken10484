@@ -34,4 +34,14 @@ public interface ArticleRepository {
             SELECT LAST_INSERT_ID()
             """)
     public long getLastInsertId();
+
+    @Select("""
+            <script>
+            SELECT *
+            FROM article
+            WHERE id = #{id}
+            </script>
+            """)
+    Article getArticleById(long id);
+//    Article getArticleById(@Param("id") long id); // 오류 : 'Parameter not found. available parameters are ...' 해결볍
 }
