@@ -2,7 +2,6 @@ package com.ll.exam.mybatis;
 
 import com.ll.exam.mybatis.article.dto.Article;
 import com.ll.exam.mybatis.article.service.ArticleService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,22 @@ class MybatisApplicationTests {
 		assertThat(articles.size()).isEqualTo(2);
 
 		articles = articleService.search("subject", "2");
+		assertThat(articles.size()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("게시물 내용 검색")
+	void t5() {
+		List<Article> articles = articleService.search("content", "제목");
+		assertThat(articles.size()).isEqualTo(0);
+
+		articles = articleService.search("content", "내용");
+		assertThat(articles.size()).isEqualTo(2);
+
+		articles = articleService.search("content", "1");
+		assertThat(articles.size()).isEqualTo(1);
+
+		articles = articleService.search("content", "2");
 		assertThat(articles.size()).isEqualTo(1);
 	}
 

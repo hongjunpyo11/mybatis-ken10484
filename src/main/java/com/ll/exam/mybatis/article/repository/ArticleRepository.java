@@ -47,13 +47,27 @@ public interface ArticleRepository {
 
     @Select("""
 			<script>
-			SELECT A.*
-			FROM article AS A
-			WHERE 1
-			<if test="kw != ''">
-			AND A.subject LIKE CONCAT('%', #{kw}, '%')
-			</if>
-			</script>
-			""")
-    List<Article> search(String kwType, @Param("kw") String kw);
+            SELECT A.*
+            FROM article AS A
+            WHERE 1
+            <if test="kw != ''">
+                <choose>
+                    <when test="kwType == 'subject'">
+                        AND A.subject LIKE CONCAT('%', #{kw}, '%')
+                    </when>
+                    <when test="kwType == 'content'">
+                        AND A.content LIKE CONCAT('%', #{kw}, '%')
+                    </when>
+                    <otherwise>
+                        AND (
+                             A.subject LIKE CONCAT('%', #{kw}, '%')
+                             OR
+                             A.content LIKE CONCAT('%', #{kw}, '%')
+                         )
+                    </otherwise>
+                </choose>
+            </if>
+            </script>
+            """)
+    List<Article> search(@Param("kwType") String kwType, @Param("kw") String kw);
 }
