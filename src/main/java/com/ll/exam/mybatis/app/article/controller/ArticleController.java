@@ -1,4 +1,4 @@
-package com.ll.exam.mybatis.article.controller;
+package com.ll.exam.mybatis.app.article.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

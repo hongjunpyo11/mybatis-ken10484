@@ -1,11 +1,9 @@
-package com.ll.exam.mybatis.article.service;
+package com.ll.exam.mybatis.app.article.service;
 
-import com.ll.exam.mybatis.article.dto.Article;
-import com.ll.exam.mybatis.article.repository.ArticleRepository;
+import com.ll.exam.mybatis.app.article.dto.Article;
+import com.ll.exam.mybatis.app.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

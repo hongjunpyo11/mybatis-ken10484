@@ -1,7 +1,7 @@
-package com.ll.exam.mybatis.base;
+package com.ll.exam.mybatis.app.base;
 
-import com.ll.exam.mybatis.interceptor.BeforeActionInterceptor;
-import com.ll.exam.mybatis.interceptor.NeedToLoginInterceptor;
+import com.ll.exam.mybatis.app.interceptor.BeforeActionInterceptor;
+import com.ll.exam.mybatis.app.interceptor.NeedToLoginInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;

@@ -1,6 +1,6 @@
-package com.ll.exam.mybatis.article.repository;
+package com.ll.exam.mybatis.app.article.repository;
 
-import com.ll.exam.mybatis.article.dto.Article;
+import com.ll.exam.mybatis.app.article.dto.Article;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

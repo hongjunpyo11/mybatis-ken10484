@@ -1,7 +1,7 @@
 package com.ll.exam.mybatis;
 
-import com.ll.exam.mybatis.article.dto.Article;
-import com.ll.exam.mybatis.article.service.ArticleService;
+import com.ll.exam.mybatis.app.article.dto.Article;
+import com.ll.exam.mybatis.app.article.service.ArticleService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

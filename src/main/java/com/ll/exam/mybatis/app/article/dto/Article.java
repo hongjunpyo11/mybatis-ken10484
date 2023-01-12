@@ -1,4 +1,4 @@
-package com.ll.exam.mybatis.article.dto;
+package com.ll.exam.mybatis.app.article.dto;
 
 import lombok.Data;
 
