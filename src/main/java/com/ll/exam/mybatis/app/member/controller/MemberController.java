@@ -1,5 +1,6 @@
 package com.ll.exam.mybatis.app.member.controller;
 
+import com.ll.exam.mybatis.app.base.rq.Rq;
 import com.ll.exam.mybatis.app.member.dto.Member;
 import com.ll.exam.mybatis.app.member.service.MemberService;
 import com.ll.exam.mybatis.util.Util;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
     private final MemberService memberService;
+    private final Rq rq;
 
     @GetMapping("/member/login")
     public String showLogin() {
@@ -33,6 +35,7 @@ public class MemberController {
             return "redirect:/?msg=" + Util.url.encode("패스워드가 일치하지 않습니다.");
         }
 
+        rq.setName(member.getName());
         session.setAttribute("loginedMemberId", member.getId());
 
         return "redirect:/?msg=" + Util.url.encode("로그인 성공");
