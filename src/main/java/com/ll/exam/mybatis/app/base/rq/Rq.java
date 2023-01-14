@@ -19,6 +19,8 @@ public class Rq {
     private final HttpServletRequest request;
     private final HttpServletResponse response;
     private final HttpSession session;
+    @Getter
+    private String alertMsg;
 
     public String getCurrentUrl() {
         String url = request.getRequestURL().toString();
@@ -87,8 +89,16 @@ public class Rq {
         session.removeAttribute("loginedMemberName");
         session.removeAttribute("loginedMemberEmail");
     }
+
+    public String historyBackTemplate(String msg) {
+        alertMsg = msg;
+
+        return "common/js";
+    }
 }
 
 /**
  * rq 를 리퀘스트 스코프로 변경, 해당 객체는 하나의 요청 안에서 인터셉터, 컨트롤러, 템플릿끼리 공유할 데이터를 담을 때 좋다.
+ *
+ * 세션에 회원번호 뿐 아니라 나머지 정보도 저장, rq를 활용하여 그것을 다양한 곳에서 접근, rq 를 이용해서 소스코드 개선
  */
