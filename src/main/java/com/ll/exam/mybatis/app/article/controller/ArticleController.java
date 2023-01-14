@@ -1,16 +1,33 @@
 package com.ll.exam.mybatis.app.article.controller;
 
+import com.ll.exam.mybatis.app.article.dto.Article;
+import com.ll.exam.mybatis.app.article.service.ArticleService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/article")
+@RequiredArgsConstructor
+@Slf4j
 public class ArticleController {
 
+    private final ArticleService articleService;
+
     @GetMapping("/list")
-    public String showList() {
+    public String showList(Model model) {
+        List<Article> articles = articleService.getArticles();
+
+        log.debug("articles : " + articles);
+
+        model.addAttribute("articles", articles);
+
         return "article/list";
     }
 
