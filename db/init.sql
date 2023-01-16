@@ -65,3 +65,6 @@ ADD COLUMN member_id BIGINT UNSIGNED NOT NULL AFTER modifyDate;
 # 기존 게시물의 작성자를 user2 로 지정
 UPDATE article
 SET member_id = 2;
+
+ALTER TABLE article
+CHANGE member_id memberId BIGINT UNSIGNED NOT NULL;
